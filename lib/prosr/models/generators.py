@@ -176,7 +176,10 @@ class ProSR(nn.Module):
         return nn.Sequential(block), out_channels
 
     def predict(self,input,data,scale):
-        return self.forward(input,scale).cpu() + data['bicubic']
+        output = self.forward(input,scale).cpu()
+        if 'bicubic' in data:
+            output += data['bicubic']
+        return output
 
     def class_name(self):
         return 'ProSR'
