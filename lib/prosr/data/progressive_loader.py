@@ -31,7 +31,7 @@ class Dataset(object):
 
         self.augment = self.phase == Phase.TRAIN
 
-        self.image_loader = pil_loader
+        self.image_loader = image_loader
         self.downscale=downscale
 
         if len(target) and len(source) and len(source) != len(target):

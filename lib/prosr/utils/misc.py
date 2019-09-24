@@ -7,7 +7,7 @@ import numpy as np
 import os
 import os.path as osp
 
-IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'ppm', 'bmp', 'tiff']
+IMG_EXTENSIONS = ['jpg', 'jpeg', 'png', 'ppm', 'bmp', 'tiff', 'tif']
 
 
 def get_filenames(source, image_format):

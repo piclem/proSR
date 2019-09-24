@@ -8,6 +8,9 @@ from prosr.logger import error
 import torch.nn as nn
 
 
+NUM_IN_CONV = 3
+NUM_OUT_CONV = 3
+
 ##############################################################################
 # Classes
 ##############################################################################
@@ -48,7 +51,7 @@ class ProSR(nn.Module):
 
         # each scale has its own init_conv
         for s in range(1, self.n_pyramids + 1):
-            self.add_module('init_conv_%d' % s, Conv2d(3, num_init_features,
+            self.add_module('init_conv_%d' % s, Conv2d(NUM_IN_CONV, num_init_features,
                                                        3))
 
         # Each denseblock forms a pyramid
@@ -96,7 +99,7 @@ class ProSR(nn.Module):
             # reconstruction convolutions
             reconst_branch = OrderedDict()
             out_channels = num_features
-            reconst_branch['final_conv'] = Conv2d(out_channels, 3, 3)
+            reconst_branch['final_conv'] = Conv2d(out_channels, NUM_OUT_CONV, 3)
             self.add_module('reconst_%d' % (i + 1),
                             nn.Sequential(reconst_branch))
 
